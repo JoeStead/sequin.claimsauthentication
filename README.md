@@ -1,0 +1,1 @@
+# sequin.claimsauthentication [![Build status](https://ci.appveyor.com/api/projects/status/5x1xkxfnff4xyj9d?svg=true)](https://ci.appveyor.com/project/jasonmitchell/sequin-claimsauthentication) [![NuGet Version](http://img.shields.io/nuget/v/Sequin.ClaimsAuthentication.svg?style=flat)](https://www.nuget.org/packages/Sequin.ClaimsAuthentication/)
