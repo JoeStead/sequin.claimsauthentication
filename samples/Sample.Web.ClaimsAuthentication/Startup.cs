@@ -21,7 +21,7 @@
                                                                   var context = new OwinContext(env);
                                                                   var claims = new List<Claim>
                                                                                {
-                                                                                   new Claim(ClaimTypes.Role, "SomeRole")
+                                                                                   new Claim("role", "SomeRole")
                                                                                };
 
                                                                   context.Request.User = new ClaimsPrincipal(new ClaimsIdentity(claims, "SomeAuthType"));

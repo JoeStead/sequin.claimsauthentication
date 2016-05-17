@@ -16,7 +16,7 @@
 
         public void Authorize(ICommandAuthorizationContext context)
         {
-            if (requiredRoles.Any(role => !context.HasClaim(ClaimTypes.Role, role)))
+            if (requiredRoles.Any(role => !context.HasClaim("role", role)))
             {
                 context.Reject();
             }

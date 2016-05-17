@@ -34,7 +34,7 @@
                                                                                                  if (isSignedIn)
                                                                                                  {
                                                                                                      var context = new OwinContext(env);
-                                                                                                     var claims = userRoles.Select(x => new Claim(ClaimTypes.Role, x)).ToList();
+                                                                                                     var claims = userRoles.Select(x => new Claim("role", x)).ToList();
                                                                                                      context.Request.User = new ClaimsPrincipal(new ClaimsIdentity(claims, "SomeAuthType"));
                                                                                                  }
 
