@@ -1,4 +1,4 @@
-﻿namespace Sample.Web.ClaimsAuthentication
+﻿namespace Sequin.ClaimsAuthentication.Sample
 {
     using System;
     using System.Collections.Generic;
@@ -6,8 +6,8 @@
     using Microsoft.Owin;
     using Owin;
     using Sequin;
-    using Sequin.ClaimsAuthentication.Middleware;
-    using Sequin.Infrastructure;
+    using Middleware;
+    using Infrastructure;
     using AppFunc = System.Func<System.Collections.Generic.IDictionary<string, object>, System.Threading.Tasks.Task>;
 
     public class Startup

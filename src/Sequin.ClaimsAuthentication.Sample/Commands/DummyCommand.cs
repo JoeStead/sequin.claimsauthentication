@@ -1,4 +1,4 @@
-﻿namespace Sample.Web.ClaimsAuthentication.Commands
+﻿namespace Sequin.ClaimsAuthentication.Sample.Commands
 {
     public class DummyCommand
     {
