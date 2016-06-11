@@ -3,11 +3,14 @@
     using System;
     using System.Collections.Generic;
     using System.Security.Claims;
+    using Configuration;
+    using global::Owin;
     using Microsoft.Owin;
     using Owin;
-    using Sequin;
-    using Middleware;
-    using Infrastructure;
+    using Owin.Middleware;
+    using Pipeline;
+    using Sequin.Owin;
+    using Sequin.Owin.Extensions;
     using AppFunc = System.Func<System.Collections.Generic.IDictionary<string, object>, System.Threading.Tasks.Task>;
 
     public class Startup
@@ -29,14 +32,16 @@
                                                                   await next.Invoke(env);
                                                               })));
 
-            app.UseSequin(new SequinOptions
-                          {
-                              CommandPipeline = new []
-                                                {
-                                                    //new CommandPipelineStage(typeof(OptInCommandAuthorization))
-                                                    new CommandPipelineStage(typeof(OptOutCommandAuthorization))
-                                                }
-                          });
+            app.UseSequin(SequinOptions.Configure()
+                                       .WithOwinDefaults()
+                                       .WithPipeline(x => new OptOutCommandAuthorization(new OwinIdentityProvider())
+                                                          {
+                                                              Next = x.IssueCommand
+                                                          })
+                                       .Build(), new []
+                                                 {
+                                                     new ResponseMiddleware(typeof (UnauthorizedCommandResponseMiddleware))
+                                                 });
         }
     }
 }

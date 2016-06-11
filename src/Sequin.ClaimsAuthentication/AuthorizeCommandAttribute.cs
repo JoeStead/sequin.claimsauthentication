@@ -1,8 +1,7 @@
-﻿namespace Sequin.ClaimsAuthentication.Core
+﻿namespace Sequin.ClaimsAuthentication
 {
     using System;
     using System.Linq;
-    using System.Security.Claims;
 
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct, AllowMultiple = true)]
     public class AuthorizeCommandAttribute : Attribute
@@ -14,7 +13,7 @@
             this.requiredRoles = requiredRoles;
         }
 
-        public void Authorize(ICommandAuthorizationContext context)
+        internal void Authorize(CommandAuthorizationContext context)
         {
             if (requiredRoles.Any(role => !context.HasClaim("role", role)))
             {

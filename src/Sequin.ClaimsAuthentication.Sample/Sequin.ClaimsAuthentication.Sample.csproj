@@ -52,6 +52,10 @@
       <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -60,12 +64,16 @@
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Sequin, Version=0.5.167.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sequin.0.5.167\lib\net45\Sequin.dll</HintPath>
+    <Reference Include="OwinRequestScopeContext, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OwinRequestScopeContext.1.0.1\lib\NET45\OwinRequestScopeContext.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Sequin.Core, Version=0.5.126.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sequin.Core.0.5.126.0\lib\net45\Sequin.Core.dll</HintPath>
+    <Reference Include="Sequin, Version=0.5.185.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sequin.0.5.185-sequin-owin\lib\net45\Sequin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Sequin.Owin, Version=0.5.185.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sequin.Owin.0.5.185-sequin-owin\lib\net45\Sequin.Owin.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
@@ -108,9 +116,9 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Sequin.ClaimsAuthentication.Core\Sequin.ClaimsAuthentication.Core.csproj">
-      <Project>{a819d819-7912-4815-9ee6-12028fae5602}</Project>
-      <Name>Sequin.ClaimsAuthentication.Core</Name>
+    <ProjectReference Include="..\Sequin.ClaimsAuthentication.Owin\Sequin.ClaimsAuthentication.Owin.csproj">
+      <Project>{f253c817-744d-4f86-a4f3-1bcbd13de8f7}</Project>
+      <Name>Sequin.ClaimsAuthentication.Owin</Name>
     </ProjectReference>
     <ProjectReference Include="..\Sequin.ClaimsAuthentication\Sequin.ClaimsAuthentication.csproj">
       <Project>{385a148c-fd0d-48b5-aeeb-86a2d10fb744}</Project>

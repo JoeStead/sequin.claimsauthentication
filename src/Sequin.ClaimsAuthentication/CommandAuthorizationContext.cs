@@ -1,18 +1,17 @@
 ﻿namespace Sequin.ClaimsAuthentication
 {
     using System.Security.Claims;
-    using Core;
 
-    internal class CommandAuthorizationContext : ICommandAuthorizationContext
+    public class CommandAuthorizationContext
     {
         private readonly ClaimsIdentity identity;
 
-        public CommandAuthorizationContext(ClaimsIdentity identity)
+        internal CommandAuthorizationContext(ClaimsIdentity identity)
         {
             this.identity = identity;
         }
 
-        public void Reject()
+        internal void Reject()
         {
             IsAuthorized = false;
         }

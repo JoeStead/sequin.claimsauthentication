@@ -1,7 +1,6 @@
 ﻿namespace Sequin.ClaimsAuthentication.Sample.Commands
 {
     using System.Threading.Tasks;
-    using Sequin.Core;
 
     public class MyAnonymousCommandHandler : IHandler<MyAnonymousCommand>
     {

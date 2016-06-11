@@ -1,4 +1,4 @@
-﻿namespace Sequin.ClaimsAuthentication.Core
+﻿namespace Sequin.ClaimsAuthentication
 {
     using System;
 

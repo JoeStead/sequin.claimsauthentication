@@ -1,7 +1,5 @@
 ﻿namespace Sequin.ClaimsAuthentication.Sample.Commands
 {
-    using Core;
-
     [AuthorizeCommand("SomeRole")]
     public class MyAuthenticatedCommand
     {

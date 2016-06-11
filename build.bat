@@ -9,19 +9,15 @@ SET prnumber=%APPVEYOR_PULL_REQUEST_NUMBER%
 SET publish=true
 SET prerelease=false
 SET version=%APPVEYOR_BUILD_VERSION%
-SET packageversion=%version%
+SET semver=%version%
 
 IF "%branch%" NEQ "master" SET prerelease=true
 IF "%prnumber%" NEQ "" SET publish=false
 
 IF %prerelease%==true (
-  SET packageversion=%packageversion%-%branch%
+  SET semver=%version%-%branch%
 )
 
-IF %publish%==true (
-  SET target=Publish
-) ELSE (
-  SET target=RunTests
-)
+SET packageversion=%semver%
 
-"packages\FAKE\tools\Fake.exe" "build.fsx" target=%target% version=%version% packageversion=%packageversion% projects=Sequin.ClaimsAuthentication;Sequin.ClaimsAuthentication.Core nugetApiKey=%NUGET_API_KEY% %*
+"packages\FAKE\tools\Fake.exe" "build.fsx" target=createpackages version=%version% semver=%semver% packageversion=%packageversion% projects=Sequin.ClaimsAuthentication;Sequin.ClaimsAuthentication.Owin nugetApiKey=%NUGET_API_KEY% %*

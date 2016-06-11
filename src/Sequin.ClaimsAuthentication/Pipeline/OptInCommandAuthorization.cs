@@ -1,15 +1,13 @@
-﻿namespace Sequin.ClaimsAuthentication.Middleware
+﻿namespace Sequin.ClaimsAuthentication.Pipeline
 {
     using System.Collections.Generic;
     using System.Linq;
-    using Core;
-    using Microsoft.Owin;
 
     public class OptInCommandAuthorization : CommandAuthorization
     {
-        public OptInCommandAuthorization(OwinMiddleware next) : base(next) { }
+        public OptInCommandAuthorization(IIdentityProvider identityProvider) : base(identityProvider) { }
 
-        protected override bool IsAuthorized(ICommandAuthorizationContext authorizationContext, IEnumerable<AuthorizeCommandAttribute> authorizationAttributes, bool isExplicitAnonymousCommand)
+        protected override bool IsAuthorized(CommandAuthorizationContext authorizationContext, IEnumerable<AuthorizeCommandAttribute> authorizationAttributes, bool isExplicitAnonymousCommand)
         {
             var attributes = authorizationAttributes.ToList();
 

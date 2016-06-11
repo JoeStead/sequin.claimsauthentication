@@ -4,10 +4,13 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Security.Claims;
-    using Fakes;
-    using Infrastructure;
+    using Configuration;
     using Microsoft.Owin;
     using Microsoft.Owin.Testing;
+    using Owin.Middleware;
+    using Pipeline;
+    using Sequin.Owin;
+    using Sequin.Owin.Extensions;
     using Xbehave;
     using AppFunc = System.Func<System.Collections.Generic.IDictionary<string, object>, System.Threading.Tasks.Task>;
 
@@ -17,7 +20,7 @@
         private List<string> userRoles;
         private CommandTrackingPostProcessor postProcessor;
 
-        protected Type AuthorizationMiddleware { get; set; }
+        protected CommandAuthorization CommandAuthorization { get; set; }
         protected TestServer Server { get; private set; }
 
         [Background]
@@ -41,14 +44,20 @@
                                                                                                  await next.Invoke(env);
                                                                                              })));
 
-                                           app.UseSequin(new SequinOptions
-                                                         {
-                                                            PostProcessor = postProcessor,
-                                                            CommandPipeline = new []
-                                                                              {
-                                                                                  new CommandPipelineStage(AuthorizationMiddleware)
-                                                                              }
-                                                         });
+                                           var options = SequinOptions.Configure()
+                                                                  .WithOwinDefaults()
+                                                                  .WithPipeline(x =>
+                                                                                {
+                                                                                    CommandAuthorization.Next = x.IssueCommand;
+                                                                                    return CommandAuthorization;
+                                                                                })
+                                                                  .WithPostProcessPipeline(postProcessor)
+                                                                  .Build();
+
+                                           app.UseSequin(options, new[]
+                                                                  {
+                                                                      new ResponseMiddleware(typeof(UnauthorizedCommandResponseMiddleware))
+                                                                  });
                                        });
         }
 

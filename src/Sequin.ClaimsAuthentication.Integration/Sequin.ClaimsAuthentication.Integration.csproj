@@ -62,12 +62,16 @@
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Sequin, Version=0.5.124.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sequin.0.5.124.0\lib\net45\Sequin.dll</HintPath>
+    <Reference Include="OwinRequestScopeContext, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OwinRequestScopeContext.1.0.1\lib\NET45\OwinRequestScopeContext.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Sequin.Core, Version=0.5.125.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sequin.Core.0.5.125.0\lib\net45\Sequin.Core.dll</HintPath>
+    <Reference Include="Sequin, Version=0.5.185.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sequin.0.5.185-sequin-owin\lib\net45\Sequin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Sequin.Owin, Version=0.5.185.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sequin.Owin.0.5.185-sequin-owin\lib\net45\Sequin.Owin.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Sigil, Version=4.5.0.0, Culture=neutral, PublicKeyToken=2d06c3494341c8ab, processorArchitecture=MSIL">
@@ -126,17 +130,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Sequin.ClaimsAuthentication.Core\Sequin.ClaimsAuthentication.Core.csproj">
-      <Project>{a819d819-7912-4815-9ee6-12028fae5602}</Project>
-      <Name>Sequin.ClaimsAuthentication.Core</Name>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Sequin.ClaimsAuthentication.Owin\Sequin.ClaimsAuthentication.Owin.csproj">
+      <Project>{f253c817-744d-4f86-a4f3-1bcbd13de8f7}</Project>
+      <Name>Sequin.ClaimsAuthentication.Owin</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\Sequin.ClaimsAuthentication\Sequin.ClaimsAuthentication.csproj">
+    <ProjectReference Include="..\Sequin.ClaimsAuthentication\Sequin.ClaimsAuthentication.csproj">
       <Project>{385a148c-fd0d-48b5-aeeb-86a2d10fb744}</Project>
       <Name>Sequin.ClaimsAuthentication</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

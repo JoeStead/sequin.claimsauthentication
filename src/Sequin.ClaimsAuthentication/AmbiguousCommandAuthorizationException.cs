@@ -1,10 +1,10 @@
-﻿namespace Sequin.ClaimsAuthentication.Core
+﻿namespace Sequin.ClaimsAuthentication
 {
     using System;
 
     public class AmbiguousCommandAuthorizationException : Exception
     {
-        public AmbiguousCommandAuthorizationException(Type commandType) : base($"Command '{commandType.Name}' has ambiguous authorization configuration")
+        internal AmbiguousCommandAuthorizationException(Type commandType) : base($"Command '{commandType.Name}' has ambiguous authorization configuration")
         {
             CommandType = commandType;
         }

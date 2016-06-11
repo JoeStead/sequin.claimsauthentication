@@ -18,11 +18,12 @@ let getRequiredBuildParamArray paramName = getRequiredBuildParam paramName |> sp
 
 let SetAssemblyVersion() =
     let version = getRequiredBuildParam "version"
+    let semver = getRequiredBuildParam "semver"
 
     BulkReplaceAssemblyInfoVersions "./src" (fun f ->
                                               {f with
                                                   AssemblyVersion = version
-                                                  AssemblyInformationalVersion = version})
+                                                  AssemblyInformationalVersion = semver})
 
 module Nuget =
     let private Publish = fun package ->

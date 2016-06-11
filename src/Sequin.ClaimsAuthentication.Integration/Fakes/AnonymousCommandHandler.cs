@@ -1,7 +1,6 @@
 ﻿namespace Sequin.ClaimsAuthentication.Integration.Fakes
 {
     using System.Threading.Tasks;
-    using Sequin.Core;
 
     public class AnonymousCommandHandler : IHandler<AnonymousCommand>
     {

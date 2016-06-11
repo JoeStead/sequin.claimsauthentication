@@ -1,7 +1,5 @@
 ﻿namespace Sequin.ClaimsAuthentication.Sample.Commands
 {
-    using Core;
-
     [AnonymousCommand]
     public class MyAnonymousCommand
     {

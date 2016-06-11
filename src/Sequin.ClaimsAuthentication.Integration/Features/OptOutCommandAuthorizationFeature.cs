@@ -2,11 +2,10 @@
 {
     using System.Net;
     using System.Net.Http;
-    using Core;
     using Extensions;
-    using Fakes;
     using FluentAssertions;
-    using Middleware;
+    using Owin;
+    using Pipeline;
     using Xbehave;
 
     public class OptOutCommandAuthorizationFeature : FeatureBase
@@ -14,7 +13,7 @@
         [Background]
         public void FeatureBackground()
         {
-            AuthorizationMiddleware = typeof(OptOutCommandAuthorization);
+            CommandAuthorization = new OptOutCommandAuthorization(new OwinIdentityProvider());
         }
 
         [Scenario]
